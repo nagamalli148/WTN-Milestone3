@@ -1,0 +1,17 @@
+How to run web with Eclipse:
+
+1)Check the version of java in your system
+2)Download Apache tomcat server zip based on the version
+Mine is 8.5 so i used the below link to download the zip:
+https://downloads.apache.org/tomcat/tomcat-8/v8.5.57/bin/apache-tomcat-8.5.57-windows-x64.zip.asc
+3)Extract the zip into a folder
+4)Open Eclipse ->Java EE Environment->Servers in the bottom->click and add Tomcat server
+5)If u get any errors regarding port numbers click on tomcat server and change the port number to a some random number
+6)Finally Create a New Project
+
+File->Other->Web->Dynamic Web Project->Project Name(Our wish)->finish
+
+File is created
+7)Create a new html file in web repo and start working and running the code as Tomcat Server.
+8)Done
+
