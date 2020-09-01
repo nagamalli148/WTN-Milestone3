@@ -62,3 +62,24 @@ email:<input type="text" name="email"><br>
 Register (Servelet Class Code)
 
 Not yet completed..!
+
+
+Creation of Table in Mysql:
+
+
+SQL> conn
+Enter user-name: system
+Enter password:
+Connected.
+SQL> create table register(
+  2  name varchar(20),
+  3  email varchar(20)
+  4  );
+
+Table created.
+
+SQL> desc register
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ NAME                                               VARCHAR2(20)
+ EMAIL                                              VARCHAR2(20)
