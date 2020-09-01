@@ -12,6 +12,30 @@ https://downloads.apache.org/tomcat/tomcat-8/v8.5.57/bin/apache-tomcat-8.5.57-wi
 File->Other->Web->Dynamic Web Project->Project Name(Our wish)->finish
 
 File is created
-7)Create a new html file in web repo and start working and running the code as Tomcat Server.
+7)Create a new html file in web repo and start working and run the code as Tomcat Server.
 8)Done
+
+
+Prerequisites for servelet:
+
+1.Go to Eclipse->New->Create a Dynamic Project
+2.Web Content->Right click->Create html file->start writing the code
+3.Go to this path mentioned below:
+
+// Inorder to store the contents into a database we need to add lib package
+ 
+C:\oraclexe\app\oracle\product\10.2.0\server\jdbc\lib\
+There you will find a file named "ojdbc14"  copy that file and come to the eclipse workspace
+Go to the Project which was created earlier->Web Content->WEB INF->lib->paste that file named ojdbc in that path.
+
+4.To run the servelet->We need to do the below process:
+java Resources->src->servelet->class name as register->finish
+
+5.Adding Build path after creating the class , we will see some errors regarding dependencies which means library packages,
+so inorder to overcome that we need to do the following procedure:
+
+src->build path->configure Build path->libraries->external jars->tomcat server->lib->servelet-api->apply and close
+
+6.Run the code and see the output
+
 
