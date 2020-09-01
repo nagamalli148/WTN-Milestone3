@@ -150,3 +150,12 @@ SQL> desc register
  ----------------------------------------- -------- ----------------------------
  NAME                                               VARCHAR2(20)
  EMAIL                                              VARCHAR2(20)
+
+
+
+
+
+# To check the output in server database 
+
+http://127.0.0.1:8081/apex/f?p=4550:11:3214040691232919::NO:::
+login and run the commands
