@@ -39,3 +39,88 @@ src->build path->configure Build path->libraries->external jars->tomcat server->
 6.Run the code and see the output
 
 
+Sample code which i had written for a login page:
+
+
+html code:
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login page</title>
+</head>
+<body>
+<form name="f1" action="Register" method="post">
+Username:<input type="text" name="user"><br>
+email:<input type="text" name="email"><br>
+<input type="submit" value="Register">
+</form>
+</body>
+</html>
+
+Register (Servelet Class Code)
+
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class Register
+ */
+@WebServlet("/Register")
+public class Register extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public Register() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		//1.get the info from the html to servelet 2.JDBC
+		String name=request.getParameter("user");
+		String email=request.getParameter("email");
+		PrintWriter pw=response.getWriter();
+		
+		pw.print(name+" "+email);
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+	        connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost)	
+		
+		  String sql="insert into register values(?,?)";
+		  PreparedStatement ps=con.prepareStatement(sql);
+		  ps.setNString(1, name);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+}
+
+
+
+
+
