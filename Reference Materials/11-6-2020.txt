@@ -1,0 +1,50 @@
+GIT
+===
+Version control platform
+Local repository(on ur system)
+
+GITHUB(Central repository)
+======
+//Github
+1.Create github
+2.Create a repositary
+3.copy the clone address
+
+//Eclipse
+=========
+1.Go to quick access and check for git plugin
+2.Clone a git repo
+3.Next..Finish
+
+
+1.Create a project folder Milestone1
+2.go to src-->right click--->package
+Module
+com.wipro.languagebasics
+3.Create a file and keep the class name as Ex1
+
+4.After completion of your work-->right click on the project folder -->select team
+
+share project-->select the local repo
+
+5.again right click on the project and select team
+-->commit-->move your file to stagging area from unstagged area
+write a commit comment-->commit and push
+6. provide your github credentials
+
+
+
+
+Install Sonar Lint
+==================
+Go to help-->marketspace-->type sonarlint-->install
+
+
+
+
+Command Line arg on Eclipse
+============================
+write the prog--->right click and go to run as-->run config-->arguments tab(pass ur arg)
+
+
+	

@@ -1,0 +1,751 @@
+DBMS:
+Basics of DBMS
+ER Diagram
+SQL
+Normalization
+Join +views ....
+
+
+DBMS:
+
+Data :raw fact(unstructured)
+Ex: is a good ravi boy
+
+Information: We apply some syntax and symmetics on the data.(structure)
+Ex: Ravi is a good boy
+
+DataBase:Collection of a data.!
+(Structured form)--->Table--->Fields --->arrangement of data.
+
+University:--->DataBase
+Student table
+course table
+faculty table
+timetable
+marks
+........
+
+
+DBMS-->(database management system)---> Software
+DataBase: (Tables)
+Management Operations:create,update,delete,insert,retrieve....!!
+of an enterprise.
+
+Ex:Oracle,Mysql,sql plus....
+
+--->Oracle
+
+FileSystem:
+FMS is a DBMS that allows access to a single file or set of files..
+Not manditory to have any relation between the files.
+A folder-->abcd.txt
+B folder--->abcd.txt
+---->Redundancy(duplicate)
+
+****
+Language that helps in accessing the data in DBMS is done by SQL(Structured Query Language)
+
+
+Difference between FS Vs DBMS
+
+Refer the excel file
+
+
+Levels/schema of Architecture:
+Framework which describes about the structure of a DB
+
+1.External Level/view
+2.Conceptual Level/Logical Schema
+3.Physical Level/Internal
+
+Employee
+----------------------------------------------------------
+Empno Empname Empemail EmpDept
+----------------------------------------------------------
+
+
+-----------------------------------------------------------
+
+
+SQL->Conceptual Level
+
+create table Employee(
+Empno number(5),//10000
+Empname varchar(10),
+........
+);
+
+
+Physical Schema:
+Harddisk----> how much memory is going to be taken to store the data.!
+
+DBA--> Database administrator
+
+
+Database Models:
+1.Relational Model
+2.Hierarichal Model
+3.Network Model
+4. ER model
+5.Object Oriented Model
+
+DBMS-->RDBMS
+XML
+
+
+ER Diagrams
+-->Design Phase----->Tables 
+
+ER :It is a high level conceptual data model to analyze the data requirements.
+
+Components in ER:
+1.Entity
+2.RelationShip
+3.Attributes
+
+Entity:
+Real world obj-->living,non living
+Ex:Person,Place,Object,Event,Concept
+
+Person:Employee,Student.....
+Place:Building....
+Object:Car,fan....
+Event:Registration,Login...
+Concept:Account,course
+
+Symbol : Rectangular box
+
+Types of Entities: Strong, Week
+
+
+Attributes:property,charactertics..!
+Types of attributes:
+1.Simple attribute:This is the one which cannot be further divided
+Ex: phoneno
+2.Composite attribute:This is the one which can be further divided
+Ex: name-->Fname,Mname,Lname
+3.Derived attribute:If you are deriving the attribute from already existing attribute 
+Ex: DOB ---->age
+DOJ----->experience
+4.
+Multivalued attribute:
+This attribute can take more than one value
+Ex: email id ...!
+
+RelationShip:(association relation established between the entities)
+--->Cardinality
+1.one to one
+2.one to many
+3.many to one
+4.many to many
+
+One to One:
+
+Ex:person has aadhar card
+
+One to many:
+
+One entity ---> multiple entities (Entity Set)
+Ex: One person can have multiple bank accounts
+A student can have multiple courses
+
+many to one:
+
+EntitySet------> one entity
+Ex:Many Specialization can be under a Department
+Many students can be under an Instructor
+
+Many to Many:
+EntitySet----->EntitySet
+Ex:Books can be written by many authors
+Multiple tutors can teach multiple students
+
+
+Keys:
+Key:It is a condition which we apply on an attribute
+------->uniqueness
+
+Student no, name
+
+1.Super Key
+2.Candidate Key
+3.Primary Key
+// DIAGRAM 
+------>Key attributes
+
+Super Key:
+Set of attributes by which you can uniquely identify an entity
+Assembly:
+year:III  II  IV
+Section:A,B
+
+rollno :5------>6
+rollno+sec---->3
+rollno+sec+year---->1
+S.K-{rollno,sec,year}
+
+Candidate Key:
+minimal Subset of super Key
+Student:sno,email,course id,sname,phone,address,branch....!
+{sno,email,phone...}
+
+Primary Key:
+The attribute by which we can uniquly identify the entity.
+
+
+Foriegn Key:
+It is used to maintain the data integrity and allow navigation between 2 different instances of an entities
+
+Week entity and Strong entity:
+
+Strong Entity: Any entity which has a key attribute(Dominant entity set)
+Week Entity: It is an entity which depends on another entities key attribute.(Sub ordinate entity set)
+
+X-->200000
+Loanid-->ICICI00012
+
+
+paid -->5k in a bank---->payment slip
+
+payid-->ICICIPAY01
+paydate-->05/8/2020
+EMI--->5k
+
+
+
+Rules for Constructing a ER diagram
+Ip: Case Study/paragraph
+
+1.Identify the Entity----->noun
+2.Identify the attributes for the Entities
+3.Identify the relationship--->Verb// construting a matrix
+4.cardinality
+5.Join all the entities 
+
+
+
+
+1.Entities:
+Department
+Instructor
+course
+Student
+
+2.construct attributes for the above entities
+
+3. Refer excel
+
+4.cardinality:
+
+
+Relationships
+
+1.Generalization
+2.Specialization
+3.Aggregation
+
+Generalization:
+
+-->Parent---Superclass------>cow,dog(sub class)----->Animal(Super class)
+Generalization is "is-a".
+--->Bottom up approach---Lower part  we have multiple entities..!
+In the higher part we have a common generalized entity
+
+
+Specialization:
+
+-->top down approach:
+--->we identify the sub set of the entity set
+
+
+Student:
+sno sname address
+address
+city street country
+
+Address ad=new Address();
+s.setaddress(ad);
+Student s=new Student();
+s.getaddress().getcity();
+s.getaddress().getcountry();
+------------------
+ad
+
+
+Aggregation:
+relation of relationship(has-a)
+
+Employee works in department
+Employee works on a project
+employee and project is handled by the manager
+
+
+Participation:
+It is a constraint which we apply on the no of instances of an entity that are participating 
+in the relation
+
+(An entity set relation with the relationship)
+
+1.Total participation
+2.Partial Participation
+
+
+Student======Enroll---->Course
+
+1.TP:if all the entityset values mandatorily participate in atleast one relationship instance of the 
+relationship set
+
+Ex:Student======Enroll
+
+2.PP:if  few entityset values participate in atleast one relationship instance of the 
+relationship set
+Ex:Enroll---->Course
+
+___________________________________________________________________________________________________
+
+SQL(Structured Query Language)
+
+-->language which helps in storing ,retreving, manuplation of the data.
+
+DDL(Data definition language)---->Used for Structuring of the table
+1.create://create a table
+2.alter://alteration --->add,drop,modify
+3.drop://drop the table 
+4.truncate://delete the data from the table
+5.rename://change the name of the table
+*****drop : when we use this command the (structure of the table +data) will be deleted
+          truncate:when we use this command the structure of the table remains the same  +data will be deleted
+
+DML(Data manuplation Lanuage)--->manuplation on the data..!----->data need to be existing
+1.insert:insert a new row of data 
+2.update:we perform updation on existing row
+3.delete:we can perform deletion in a row
+
+TCL(Transaction control language)--->data saving points, rollback
+A:500
+B:500
+A-->B(successfull)
+A:0
+B:1000
+
+1.commit:--->permanent save
+2.rollback:--->undo the process(go back to previous save point)
+3.savepoint:--->temporary save
+
+A:1000(savepoint t1)	//commit
+B:1000(savepoint t2)	//commit
+A--->B
+rollback t1
+rollback t2
+
+DCL(Data Control Language)
+Authorize the user(permisions)
+
+1.grant--->give the permission
+2.revoke--->remove the permission
+
+DQL(Data Query Language)
+
+Used to fetch the data from the tables
+1.select--->retriving of data
+
+---------------------------------------------------------------------------------------
+
+How to create your own user account on oracle?????
+1.create user <username> identified by <password>;
+2.grant connect,resource to <username>;
+3.commit;
+
+----------------------------------------------------------------------------------------
+
+DDL:
+create:
+create  table <table name>( 
+
+attribute   //type of the data(limitation) key,
+empno  number(4)
+
+);
+
+//integer-->number
+//decimal-->number(,)
+//text----->varchar
+//character--->char
+//date--------->Date
+
+SQL> create table student(
+  2  regno number(5) primary key,
+  3  name varchar(15),
+  4  email varchar(15),
+  5  DOB DATE
+  6  );
+
+check the structure of the table---->desc student;
+
+
+
+Alter:
+1.add
+2.drop
+3.modify
+
+SQL> alter table student add marks number(3);
+
+Table altered.
+
+SQL> desc student;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ REGNO                                     NOT NULL NUMBER(5)
+ NAME                                               VARCHAR2(15)
+ EMAIL                                              VARCHAR2(15)
+ DOB                                                DATE
+ MARKS                                              NUMBER(3)
+
+
+SQL> alter table student drop column DOB;
+
+Table altered.
+
+SQL> desc student;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ REGNO                                     NOT NULL NUMBER(5)
+ NAME                                               VARCHAR2(15)
+ EMAIL                                              VARCHAR2(15)
+ MARKS                                              NUMBER(3)
+
+
+SQL> alter table student modify name varchar(30);
+
+SQL> alter table student add primary key (regno,name)
+
+Table altered.
+
+SQL> desc student;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ REGNO                                     NOT NULL NUMBER(5)
+ NAME                                               VARCHAR2(30)
+ EMAIL                                              VARCHAR2(15)
+ MARKS                                              NUMBER(3)
+
+SQL> alter table Deptstudent rename column name to studentname;
+
+Table altered.
+
+SQL> desc Deptstudent;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ REGNO                                     NOT NULL NUMBER(5)
+ STUDENTNAME                                        VARCHAR2(30)
+ EMAIL                                              VARCHAR2(15)
+ MARKS                                              NUMBER(3)
+
+
+Drop:
+
+
+SQL> drop table Deptstudent;
+
+Table dropped.
+
+SQL> desc Deptstudent;
+ERROR:
+ORA-04043: object Deptstudent does not exist
+
+
+Keys:
+1.Primary Key:It is a unique key used to access a table unquiely
+2.Foreign Key:It is a primary key in another table by which we can access the data of that table in the current table
+3.Alternate Key
+4.Unquie
+5.Surrogate
+
+DML:
+
+1.Insert
+2.Update
+3.Delete
+
+Insert:
+
+ insert into student values(101,'kar','k@g.c');
+
+1 row created.
+
+SQL> select * from student;
+
+       SNO SNAME  EMAIL
+---------- ------ ------
+       101 kar    k@g.c
+
+
+
+SQL> select * from student;
+
+       SNO SNAME  EMAIL  DOB
+---------- ------ ------ ---------
+       101 kar    k@g.c
+       102 kar    k@g.c  15-MAY-20
+       103               02-MAY-00
+
+SQL> update student set sname='pp' where sno=103;
+
+1 row updated.
+
+SQL> select * from student;
+
+       SNO SNAME  EMAIL  DOB
+---------- ------ ------ ---------
+       101 kar    k@g.c
+       102 kar    k@g.c  15-MAY-20
+       103 pp            02-MAY-00
+		
+
+--------------------------------------------------------------------------------------------------------
+
+
+SQL> create table dept(
+  2  deptid number(3) primary key,
+  3  deptname varchar(10)
+  4  );
+
+Table created.
+
+SQL> desc dept;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEPTID                                    NOT NULL NUMBER(3)
+ DEPTNAME                                           VARCHAR2(10)
+
+SQL> create table student(
+  2  sno number(3),
+  3  sname varchar(10),
+  4  email varchar(10),
+  5  deptid references dept(deptid)
+  6  );
+
+Table created.
+
+SQL> desc student;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SNO                                                NUMBER(3)
+ SNAME                                              VARCHAR2(10)
+ EMAIL                                              VARCHAR2(10)
+ DEPTID                                             NUMBER(3)
+
+SQL> insert into dept values(&deptid,'&deptname');
+Enter value for deptid: 101
+Enter value for deptname: CSE
+old   1: insert into dept values(&deptid,'&deptname')
+new   1: insert into dept values(101,'CSE')
+
+1 row created.
+
+SQL> /
+Enter value for deptid: 102
+Enter value for deptname: ECE
+old   1: insert into dept values(&deptid,'&deptname')
+new   1: insert into dept values(102,'ECE')
+
+1 row created.
+
+SQL> /
+Enter value for deptid: 103
+Enter value for deptname: ECSE
+old   1: insert into dept values(&deptid,'&deptname')
+new   1: insert into dept values(103,'ECSE')
+
+1 row created.
+
+SQL> select * from dept;
+
+    DEPTID DEPTNAME
+---------- ----------
+       101 CSE
+       102 ECE
+       103 ECSE
+
+
+SQL> insert into student values(&sno,'&sname','&email',&deptid);
+Enter value for sno: 200
+Enter value for sname: kk
+Enter value for email: k@g.c
+Enter value for deptid: 101
+old   1: insert into student values(&sno,'&sname','&email',&deptid)
+new   1: insert into student values(200,'kk','k@g.c',101)
+
+1 row created.
+
+
+
+Select
+--------
+
+
+SQL> select * from student;
+
+       SNO SNAME      EMAIL          DEPTID
+---------- ---------- ---------- ----------
+       200 kk         k@g.c             101
+       202 pp         p@c.c             102
+       203 zz         z@p.c             103
+       204 ll         l@c.c             101
+
+SQL> select * from dept;
+
+    DEPTID DEPTNAME
+---------- ----------
+       101 CSE
+       102 ECE
+       103 ECSE
+
+SQL> select deptid from student where sno=203;
+
+    DEPTID
+----------
+       103
+
+SQL> select deptname from dept where deptid=(select deptid from student where sno=203);
+
+DEPTNAME
+----------
+ECSE
+
+SQL> select deptid from dept where deptname='CSE';
+
+    DEPTID
+----------
+       101
+
+SQL> select sname from student where deptid=(select deptid from dept where deptname='CSE');
+
+SNAME
+----------
+kk
+ll
+
+SQL> select s.sname from student s,dept d where s.deptid=d.deptid and d.deptname='CSE';
+
+SNAME
+----------
+kk
+ll
+
+SQL> select d.deptname from student s,dept d where d.deptid=s.deptid and s.sno=203;
+
+DEPTNAME
+----------
+ECSE
+=====================================================================
+
+Alternate Key:It is a unique key other than primary key in the table
+Unique Key: It is a Uniquely identified column which can accept null values in it.
+
+SQL> alter table student add unique (sname);
+
+Table altered.
+
+Primary key Vs Unique Key--->null value not accepted  Vs null value accepted 
+Surrogate Key--->It is unique key which can be updatable
+
+================================================================
+
+
+Joins:
+
+It is clause which is used to join /combine two or more tables into a single table.
+
+***To perform this operation we require 1 PK and 1 FK.
+
+1.InnerJoin
+2.Left Join
+3.Right Join
+4.Full Outer Join
+
+InnerJoin:
+Matched information--->[FK ,PK]
+
+select * from student s inner join dept d on s.depid=d.depid;
+
+       SNO SNAME    EMAIL         DEPID      DEPID DEPTNA
+---------- -------- -------- ---------- ---------- ------
+       200 kk       k@c.c           101        101 cse
+       201          k@c.c           103        103 ecse
+       203 lk       l@c.c           101        101 cse
+       204          l@c.c           101        101 cse
+       206          kl@c.c          102        102 ece
+
+SQL> select * from dept d inner join student s on s.depid=d.depid;
+
+     DEPID DEPTNA        SNO SNAME    EMAIL         DEPID
+---------- ------ ---------- -------- -------- ----------
+       101 cse           200 kk       k@c.c           101
+       103 ecse          201          k@c.c           103
+       101 cse           203 lk       l@c.c           101
+       101 cse           204          l@c.c           101
+       102 ece           206          kl@c.c          102
+
+
+***note:  select * from <left table> <join operation> <right table> on (matching of FK with the PK)
+
+Interview: Diagram+defin+example
+	
+Left Join: InnerJoin+unmatched information in the left table
+Right Join:InnerJoin+unmatched information in the right table
+Full outer Join:Left Join +Right Join---->(Inner Join+LUM+RUM)
+
+Inner
+SQL> select * from dept d inner join student s on s.depid=d.depid;
+
+     DEPID DEPTNA        SNO SNAME    EMAIL         DEPID
+---------- ------ ---------- -------- -------- ----------
+       101 cse           200 kk       k@c.c           101
+       103 ecse          201          k@c.c           103
+       101 cse           203 lk       l@c.c           101
+       101 cse           204          l@c.c           101
+       102 ece           206          kl@c.c          102
+
+
+Left
+SQL> select * from student s left join dept d on s.depid=d.depid;
+
+
+       SNO SNAME    EMAIL         DEPID      DEPID DEPTNA
+---------- -------- -------- ---------- ---------- ------
+       204          l@c.c           101        101 cse
+       203 lk       l@c.c           101        101 cse
+       200 kk       k@c.c           101        101 cse
+       206          kl@c.c          102        102 ece
+       201          k@c.c           103        103 ecse
+       202 ll       l@c.c
+
+6 rows selected.
+
+Right
+SQL> select * from student s right join dept d on s.depid=d.depid;
+
+       SNO SNAME    EMAIL         DEPID      DEPID DEPTNA
+---------- -------- -------- ---------- ---------- ------
+       200 kk       k@c.c           101        101 cse
+       201          k@c.c           103        103 ecse
+       203 lk       l@c.c           101        101 cse
+       204          l@c.c           101        101 cse
+       206          kl@c.c          102        102 ece
+
+Full Outer Join
+SQL> select * from student s full outer join dept d on s.depid=d.depid;
+
+       SNO SNAME    EMAIL         DEPID      DEPID DEPTNA
+---------- -------- -------- ---------- ---------- ------
+       204          l@c.c           101        101 cse
+       203 lk       l@c.c           101        101 cse
+       200 kk       k@c.c           101        101 cse
+       206          kl@c.c          102        102 ece
+       201          k@c.c           103        103 ecse
+       202 ll       l@c.c
+
+6 rows selected.
+

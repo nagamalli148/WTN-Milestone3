@@ -1,0 +1,135 @@
+Structure of the JAVA
+
+JDK--> JAVA Development tool kit 
+JRE---> JAVA Runtime Enivronment
+
+
+JDK--> JRE+Development tools
+
+javac(java-->jdk--->bin)
+java(JRE-->JVM)
+
+JRE--->JVM(java virtual machine)
+
+
+javac A.java--->A.class--->java A-->JVM
+
+
+JVM(Java Virtual Machine)
+install java--->jdk+jre-->jdk+jre(machine dependent)-->JVM(machine independent) 
+WORA-->portable(class file)
+
+java prog on any platform(OS) u need to compile it(class file)
+
+JVM(we can give the class file as an input from any platform)
+
+
+
+JVM
+
+1.Class sub loader
+2.Memory area
+3.Execution engine
+
+1. Class sub loader(.class file i/p)
+	1.loding
+	2.Linking
+	3.intialization
+loading
+1.Bootstrap sub loader
+2.extension loader
+3.Application loader
+
+Bootstrap loader-->>>load a jar file:rt.jar(importing of java folders)//packages
+Extension loader--->>> load a folder called ext(system related files binding to run the jvm)
+Application loader--->>path at which it is present (C:/demo-->A.class)
+Classpath of the jdk bin
+
+
+Linking :
+1.Verify
+2.prepare
+3.resolve
+
+
+Verify:It is going to verify whether the class file is generated with proper comiplation or not
+//virus code
+Prepare:intialization of the variables is done with its default values
+int a;
+0
+Resolve:all the symbolic references will be converted into direct references
+//3000
+class A{
+//3302 int i;
+}
+
+
+class B{
+
+A o=new A();
+//3000--->3302
+o.i
+}
+
+
+
+intialization:all the data,methods will be loaded with the keyword:static
+// main is going to be loaded in this phase
+
+
+Memory area
+1.Method area
+2.heap area
+3.stack area
+4.PC register
+5.Native stack
+
+
+Method area:all the  methods will be loaded in this area(data,logical steps,expresions...)
+heap area: dynamic memory area(loads the objects present in the program)
+//grows and shinks depending upon the program 
+stack area:we load all the threads in our program in this are and schedule these threads according to the priorities
+PC register:load the next instruction that need to be executed
+
+
+int a=50; 33006
+int c=a; 33007
+
+The current ex is with 33006
+PC=33007
+
+Native method stack:
+loads the functions that are written in other languages
+
+
+Execution engine:
+1.Interpreter
+2.JIT compiler
+3.GC(garbage collection)
+
+
+Interpreter:converts the code line by line from HLL to LLL
+JIT compiler:(just in time)
+recursion,looping
+
+for(int i=0;i<10;i++)
+{
+System.out.println(i);
+}
+
+loop:1 sec in interpretation :10sec
+
+compiler: 2sec-4sec 
+
+
+GC(garbage collection):java is dynamic memory
+dereferencing of all the references(object,external file)
+
+
+JNI+Native library
+
+Native method stack(c func)--->Native libary(checks for the lib files that helps in converting this fun into methods) 
+JNI(java native interface)---->Execution engine
+
+
+fun-->methods(native lib)

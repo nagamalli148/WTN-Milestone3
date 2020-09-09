@@ -1,0 +1,28 @@
+1.parameterized Testing
+2.TestSuite
+
+Parameterized Testing
+Instead of using 100 testcases we use this P.Testing.
+
+1.class -->@Runwith(parameterized.class) //Annotation
+2.Declare the inputs,output (single output)
+3.Take a public parameterized constructor
+4.Take a method --->@Parameterized.Parameters
+public static collection (/framework which collects the object) te
+{
+return Arrays.asList(new object[][]{
+{input,output1},{input2,output2}
+});
+}
+//collection which contains sets.lists,Maps
+
+coverage :100% ->total code
+Questions:
+
+class Diagram
+project->new->wizard-uml-class,sequence 
+->class->drag and drop->
+
+pluggin uml:
+google->objectAid.com
+help->install new software->link->next

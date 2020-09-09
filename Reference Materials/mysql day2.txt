@@ -1,0 +1,275 @@
+Primary key:It's a unique key used to access a table uniquely. 
+Foreign Key:(It's a primary key in another table)
+It's a referencial key where we can access the data from another table.
+
+SQL> create table dept(
+  2  deptid number(3) primary key,
+  3  deptname varchar(10)
+  4  );
+
+Table created.
+
+SQL> desc Dept;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEPTID                                    NOT NULL NUMBER(3)
+ DEPTNAME                                           VARCHAR2(10)
+
+SQL> create table student(
+  2  sno number(3),
+  3  sname varchar(10),
+  4  email varchar(10),
+  5  deptid references dept(depid)
+  6  );
+deptid references dept(depid)
+                       *
+ERROR at line 5:
+ORA-00904: "DEPID": invalid identifier
+
+
+SQL> create table student(
+  2  sno number(3),
+  3  sname varchar(10),
+  4  email varchar(10),
+  5  deptid references dept(deptid)
+  6  );
+
+Table created.
+
+SQL> desc student
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SNO                                                NUMBER(3)
+ SNAME                                              VARCHAR2(10)
+ EMAIL                                              VARCHAR2(10)
+ DEPTID                                             NUMBER(3)
+
+
+SQL> desc student
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SNO                                                NUMBER(3)
+ SNAME                                              VARCHAR2(10)
+ EMAIL                                              VARCHAR2(10)
+ DEPTID                                             NUMBER(3)
+
+//Allocating Data Dynamically
+
+
+
+SQL> insert into dept values(&deptid,'&deptname');
+Enter value for deptid: 101
+Enter value for deptname: ECE
+old   1: insert into dept values(&deptid,'&deptname')
+new   1: insert into dept values(101,'ECE')
+
+1 row created.
+
+single quote for Deptname - Because it's VARCHAR
+
+
+We need not to type whole command again.if we give / the same query will execute again
+
+SQL> /
+Enter value for deptid: 102
+Enter value for deptname: CSE
+old   1: insert into dept values(&deptid,'&deptname')
+new   1: insert into dept values(102,'CSE')
+
+1 row created.
+
+SQL>
+
+SQL> select * from dept;
+
+    DEPTID DEPTNAME
+---------- ----------
+       101 ECE
+       102 CSE
+
+SQL>
+
+
+SQL> insert into student values(&sno,'&sname','&email',&deptid);
+Enter value for sno: 200
+Enter value for sname: nm
+Enter value for email: nm@g.c
+Enter value for deptid: 101
+old   1: insert into student values(&sno,'&sname','&email',&deptid)
+new   1: insert into student values(200,'nm','nm@g.c',101)
+
+1 row created.
+
+SQL> /
+Enter value for sno: 300
+Enter value for sname: nr
+Enter value for email: nr@g.c
+Enter value for deptid: 102
+old   1: insert into student values(&sno,'&sname','&email',&deptid)
+new   1: insert into student values(300,'nr','nr@g.c',102)
+
+1 row created.
+
+SQL>
+
+
+SQL> insert into student values(&sno,'&sname','&email',&deptid);
+Enter value for sno: 203
+Enter value for sname: zz
+Enter value for email: z@g.com
+Enter value for deptid: null
+old   1: insert into student values(&sno,'&sname','&email',&deptid)
+new   1: insert into student values(203,'zz','z@g.com',null)
+
+1 row created.
+
+
+SQL> select * from dept;
+
+    DEPTID DEPTNAME
+---------- ----------
+       101 ECE
+       102 CSE
+
+How to write a Query:
+
+1.
+
+
+SQL> select deptid from student where sno=200;
+
+    DEPTID
+----------
+       101
+
+
+SQL> select deptname from dept where deptid=(select deptid from student where sno=200);
+
+DEPTNAME
+----------
+ECE
+
+SQL>
+
+CSE Dept tho unna student name
+
+
+SQL> select sname from student where deptid=(select deptid from dept where deptname='CSE');
+
+SNAME
+----------
+nr
+-----------------------------------------------------
+The same Query with Foreign Key
+===============================
+SQL> select deptname from dept where deptid=(select deptid from student where sno=200);
+
+//Taking Aliasing student name as s 
+
+SQL> select s.sname from student s,dept d where s.deptid=d.deptid and d.deptname='CSE';
+
+SNAME
+----------
+nr
+
+
+//calling deptname 
+SQL> select * from student;
+
+       SNO SNAME      EMAIL          DEPTID
+---------- ---------- ---------- ----------
+       200 nm         nm@g.c            101
+       300 nr         nr@g.c            102
+       203 zz         z@g.com
+
+SQL> select * from dept;
+
+    DEPTID DEPTNAME
+---------- ----------
+       101 ECE
+       102 CSE
+
+
+SQL> select d.deptname from student s,dept d where d.deptid=s.deptid and s.sno=203;
+
+no rows selected
+
+SQL> select d.deptname from student s,dept d where d.deptid=s.deptid and s.sno=200;
+
+DEPTNAME
+----------
+ECE
+
+SQL>
+
+Hands-on:
+
+
+
+SQL> insert into dept values(&deptid,'&deptname');
+Enter value for deptid: 101
+Enter value for deptname: ECE
+old   1: insert into dept values(&deptid,'&deptname')
+new   1: insert into dept values(101,'ECE')
+
+1 row created.
+
+SQL> /
+Enter value for deptid: 102
+Enter value for deptname: CSE
+old   1: insert into dept values(&deptid,'&deptname')
+new   1: insert into dept values(102,'CSE')
+
+1 row created.
+
+SQL> /
+Enter value for deptid: 103
+Enter value for deptname: ECSE
+old   1: insert into dept values(&deptid,'&deptname')
+new   1: insert into dept values(103,'ECSE')
+
+1 row created.
+
+SQL> insert into student values(&sno,'&sname','&email',&deptid);
+Enter value for sno: 200
+Enter value for sname: NR
+Enter value for email: nr@g.com
+Enter value for deptid: 101
+old   1: insert into student values(&sno,'&sname','&email',&deptid)
+new   1: insert into student values(200,'NR','nr@g.com',101)
+
+1 row created.
+
+SQL> /
+Enter value for sno: 203
+Enter value for sname: nm
+Enter value for email: nm@g.com
+Enter value for deptid: 102
+old   1: insert into student values(&sno,'&sname','&email',&deptid)
+new   1: insert into student values(203,'nm','nm@g.com',102)
+
+1 row created.
+
+SQL> select * from student;
+
+       SNO SNAME      EMAIL          DEPTID
+---------- ---------- ---------- ----------
+       200 NR         nr@g.com          101
+       203 nm         nm@g.com          102
+
+SQL> select * from dept;
+
+    DEPTID DEPTNAME
+---------- ----------
+       101 ECE
+       102 CSE
+       103 ECSE
+
+SQL> commit;
+
+Commit complete.
+
+
+
+
+
